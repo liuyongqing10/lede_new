@@ -50,9 +50,6 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
-      - name: Generate configuration file
-        run: make defconfig
-
       - name: Make download
         run: |
           make download -j8
@@ -104,6 +101,6 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.YOURTOKEN }}
-          file: ./artifact/firmware/*
+          file: ./artifact/*
           tag: ${{ github.ref }}
           file_glob: true
